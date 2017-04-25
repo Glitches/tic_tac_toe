@@ -26,47 +26,69 @@ def board_drawer(board_store):
 def play():
     '''Asks input from both players alternatively'''
     max_blanks = 9
-    for counter in range(1,max_blanks):
+    for counter in range(0,max_blanks):
         if counter%2 == 0:
-            ics = input('Where to place your X? ')
-            ics = str(ics)
-            board_store[ics] = 'X'
-            board_drawer(board_store)
-            print(board_store)
+            empty_x()
+            win()
         else:
-            circle = input('Where to place your O? ')
-            circle = str(circle)
-            board_store[circle] = 'O'
-            board_drawer(board_store)
+            empty_o()
+            win()
 
-def empty():
-    '''Checks if the box is empty and avoid overwrite'''
+
+def empty_x():
+    '''Checks if the box is empty and avoid overwrite
+
+    Input a box number from the player'''
+    ics = input('Where to place your X? ')
+    ics = str(ics)
+    while board_store[ics] != ' ':
+        ics = input('Where to place your X? ')
+        ics = str(ics)
+    board_store[ics] = 'X'
+    board_drawer(board_store)
+    # print(board_store) # debug print
+
+def empty_o():
+    '''Checks if the box is empty and avoid overwrite
+
+    Input a box number from the player'''
+    circle = input('Where to place your O? ')
+    circle = str(circle)
+    while board_store[circle] != ' ':
+        circle = input('Where to place your O? ')
+        circle = str(circle)
+    board_store[circle] = 'O'
+    board_drawer(board_store)
+    # print(board_store) # debug print
+
+
+
 
 def win():
     '''Checks if we have 3 X or O and declares a winner or continue to play'''
     if  board_store['1'] == board_store['2'] == board_store['3'] == 'O' or  board_store['1'] == board_store['2'] == board_store['3'] == 'X':
-        print(board['1'] + 'wins!!!')
+        print(board_store['1'] + 'wins!!!')
         exit()
     elif board_store['4'] == board_store['5'] == board_store['6'] == 'O' or  board_store['4'] == board_store['5'] == board_store['6'] == 'X':
-        print(board['4'] + 'wins!!!')
+        print(board_store['4'] + 'wins!!!')
         exit()
     elif board_store['7'] == board_store['8'] == board_store['9'] == 'O' or  board_store['7'] == board_store['8'] == board_store['9'] == 'X':
-        print(board['7'] + 'wins!!!')
+        print(board_store['7'] + 'wins!!!')
         exit()
     elif board_store['1'] == board_store['4'] == board_store['7'] == 'O' or  board_store['1'] == board_store['4'] == board_store['7'] == 'X':
         print(board_store['1'] + 'wins!!!')
         exit()
     elif board_store['2'] == board_store['5'] == board_store['8'] == 'O' or  board_store['2'] == board_store['5'] == board_store['8'] == 'X':
-        print(board['2'] + 'wins!!!')
+        print(board_store['2'] + 'wins!!!')
         exit()
     elif board_store['3'] == board_store['6'] == board_store['9'] == 'O' or  board_store['3'] == board_store['6'] == board_store['9'] == 'X':
-        print(board['3'] + 'wins!!!')
+        print(board_store['3'] + 'wins!!!')
         exit()
     elif board_store['3'] == board_store['5'] == board_store['7'] == 'O' or  board_store['3'] == board_store['5'] == board_store['7'] == 'X':
-        print(board['3'] + 'wins!!!')
+        print(board_store['3'] + 'wins!!!')
         exit()
-    elif board_store['1'] == board_store['5'] == board_store['9x'] == 'O' or  board_store['1'] == board_store['5'] == board_store['9'] == 'X':
-        print(board['1'] + 'wins!!!')
+    elif board_store['1'] == board_store['5'] == board_store['9'] == 'O' or  board_store['1'] == board_store['5'] == board_store['9'] == 'X':
+        print(board_store['1'] + 'wins!!!')
         exit()
     return
 
