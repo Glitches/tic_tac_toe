@@ -4,6 +4,14 @@
 # Tic Tac Toe Game!!
 
 board_store = {'1':' ','2':' ','3':' ','4':' ','5':' ','6':' ','7':' ','8':' ','9':' '}
+board_numbered = {'1':'1','2':'2','3':'3','4':'4','5':'5','6':'6','7':'7','8':'8','9':'9'}
+welcome_message = '''
+
+Welcome to my Tic Tac Toe Game!!
+You already know the rules!
+This app switches itself to player 1 and 2: you have just to type box number,
+as you can see in the following scheme!
+Have fun!'''
 
 def board_drawer(board_store):
     '''
@@ -33,6 +41,9 @@ def play():
         else:
             empty_o()
             win()
+    print('No victory!!!')
+    return
+
 
 
 def empty_x():
@@ -67,31 +78,34 @@ def empty_o():
 def win():
     '''Checks if we have 3 X or O and declares a winner or continue to play'''
     if  board_store['1'] == board_store['2'] == board_store['3'] == 'O' or  board_store['1'] == board_store['2'] == board_store['3'] == 'X':
-        print(board_store['1'] + 'wins!!!')
+        print(board_store['1'] + ' wins!!!')
         exit()
     elif board_store['4'] == board_store['5'] == board_store['6'] == 'O' or  board_store['4'] == board_store['5'] == board_store['6'] == 'X':
-        print(board_store['4'] + 'wins!!!')
+        print(board_store['4'] + ' wins!!!')
         exit()
     elif board_store['7'] == board_store['8'] == board_store['9'] == 'O' or  board_store['7'] == board_store['8'] == board_store['9'] == 'X':
-        print(board_store['7'] + 'wins!!!')
+        print(board_store['7'] + ' wins!!!')
         exit()
     elif board_store['1'] == board_store['4'] == board_store['7'] == 'O' or  board_store['1'] == board_store['4'] == board_store['7'] == 'X':
-        print(board_store['1'] + 'wins!!!')
+        print(board_store['1'] + ' wins!!!')
         exit()
     elif board_store['2'] == board_store['5'] == board_store['8'] == 'O' or  board_store['2'] == board_store['5'] == board_store['8'] == 'X':
-        print(board_store['2'] + 'wins!!!')
+        print(board_store['2'] + ' wins!!!')
         exit()
     elif board_store['3'] == board_store['6'] == board_store['9'] == 'O' or  board_store['3'] == board_store['6'] == board_store['9'] == 'X':
-        print(board_store['3'] + 'wins!!!')
+        print(board_store['3'] + ' wins!!!')
         exit()
     elif board_store['3'] == board_store['5'] == board_store['7'] == 'O' or  board_store['3'] == board_store['5'] == board_store['7'] == 'X':
-        print(board_store['3'] + 'wins!!!')
+        print(board_store['3'] + ' wins!!!')
         exit()
     elif board_store['1'] == board_store['5'] == board_store['9'] == 'O' or  board_store['1'] == board_store['5'] == board_store['9'] == 'X':
-        print(board_store['1'] + 'wins!!!')
+        print(board_store['1'] + ' wins!!!')
         exit()
     return
 
-
-board_drawer(board_store)
+'''Welcom Message'''
+print(welcome_message)
+'''Draws the empty board'''
+board_drawer(board_numbered)
+'''Starts the game'''
 play()
