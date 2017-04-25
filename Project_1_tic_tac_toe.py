@@ -3,7 +3,7 @@
 
 # Tic Tac Toe Game!!
 
-board_store = {'s1':' ','s2':' ','s3':' ','s4':' ','s5':' ','s6':' ','s7':' ','s8':' ','s9':' '}
+board_store = {'1':' ','2':' ','3':' ','4':' ','5':' ','6':' ','7':' ','8':' ','9':' '}
 
 def board_drawer(board_store):
     '''
@@ -12,26 +12,64 @@ def board_drawer(board_store):
     Input: board_store
     Output: print out the updated board
     '''
-    board = '  '+board_store['s1']+' | '+board_store['s2']+' | '+board_store['s3']+' ''\n-------------\n'
-    board2 = ' '+board_store['s4']+' | '+board_store['s5']+' | '+board_store['s6']+' \n-------------\n'
-    board3 = ' '+board_store['s7']+' | '+board_store['s8']+' | '+board_store['s9']+' \n'
-    print(board, board2, board3)
+    row1 = '  '+board_store['1']+' | '+board_store['2']+' | '+board_store['3']
+    row2 = '  '+board_store['4']+' | '+board_store['5']+' | '+board_store['6']
+    row3 = '  '+board_store['7']+' | '+board_store['8']+' | '+board_store['9']+'\n'
+    divider = '\n------------- \n'
+    print('\n')
+    print(row1)
+    print(divider)
+    print(row2)
+    print(divider)
+    print(row3)
 
 def play():
+    '''Asks input from both players alternatively'''
     max_blanks = 9
-    counter = 0
-    while counter <= max_blanks:
+    for counter in range(1,max_blanks):
         if counter%2 == 0:
-            ics = raw_input('Where to place your X? ')
-            board_store[str(ics)] = X
-            print(board, board2, board3)
+            ics = input('Where to place your X? ')
+            ics = str(ics)
+            board_store[ics] = 'X'
+            board_drawer(board_store)
+            print(board_store)
         else:
-            circle = raw_input('Where to place your O? ')
-            board_store[str(circle)] = O
-            print(board, board2, board3)
+            circle = input('Where to place your O? ')
+            circle = str(circle)
+            board_store[circle] = 'O'
+            board_drawer(board_store)
 
+def empty():
+    '''Checks if the box is empty and avoid overwrite'''
 
-
+def win():
+    '''Checks if we have 3 X or O and declares a winner or continue to play'''
+    if  board_store['1'] == board_store['2'] == board_store['3'] == 'O' or  board_store['1'] == board_store['2'] == board_store['3'] == 'X':
+        print(board['1'] + 'wins!!!')
+        exit()
+    elif board_store['4'] == board_store['5'] == board_store['6'] == 'O' or  board_store['4'] == board_store['5'] == board_store['6'] == 'X':
+        print(board['4'] + 'wins!!!')
+        exit()
+    elif board_store['7'] == board_store['8'] == board_store['9'] == 'O' or  board_store['7'] == board_store['8'] == board_store['9'] == 'X':
+        print(board['7'] + 'wins!!!')
+        exit()
+    elif board_store['1'] == board_store['4'] == board_store['7'] == 'O' or  board_store['1'] == board_store['4'] == board_store['7'] == 'X':
+        print(board_store['1'] + 'wins!!!')
+        exit()
+    elif board_store['2'] == board_store['5'] == board_store['8'] == 'O' or  board_store['2'] == board_store['5'] == board_store['8'] == 'X':
+        print(board['2'] + 'wins!!!')
+        exit()
+    elif board_store['3'] == board_store['6'] == board_store['9'] == 'O' or  board_store['3'] == board_store['6'] == board_store['9'] == 'X':
+        print(board['3'] + 'wins!!!')
+        exit()
+    elif board_store['3'] == board_store['5'] == board_store['7'] == 'O' or  board_store['3'] == board_store['5'] == board_store['7'] == 'X':
+        print(board['3'] + 'wins!!!')
+        exit()
+    elif board_store['1'] == board_store['5'] == board_store['9x'] == 'O' or  board_store['1'] == board_store['5'] == board_store['9'] == 'X':
+        print(board['1'] + 'wins!!!')
+        exit()
+    return
 
 
 board_drawer(board_store)
+play()
